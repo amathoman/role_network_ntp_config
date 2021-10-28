@@ -1,0 +1,12 @@
+---
+# tasks file for ntp_network_config
+
+- name: Pre-Check | Ensure ntp_server_list not null
+  assert:
+    that:
+      - ntp_server_list is defined
+    fail_msg: "ntp_server_list must be provided"
+
+
+- name: Configure NTP
+  include_tasks: "{{ ansible_network_os }}.yml"

@@ -1,0 +1,44 @@
+---
+  # NTP config tasks for Juniper Devices.....
+  
+  # - name: Pre-Check | Ensure Netconf is running
+  #   vars:
+  #     ansible_connection: network_cli
+  #   junipernetworks.junos.junos_netconf:
+  
+  
+  # - name: Gather Info | Retrieve facts from Junos OS 
+  #   junipernetworks.junos.junos_facts:
+  #   register: junos_facts_collection
+  #   ignore_errors: true
+  
+  
+  - name: NTP Configuration Changes
+  
+    block:
+
+      - name: Config | Remove NTP config & update with valid servers
+        junos_config:
+          lines: "{{ lines_template }}"
+          comment: "Ansible Automation - Update NTP Serer List"
+        vars:
+          lines_template: "[ 'delete system ntp',{% for ntp_server in ntp_server_list %}'set system ntp server {{ ntp_server }}',{% endfor %}]"
+
+    rescue:
+  
+      - name: Errors Applying NTP Configuration
+        debug: 
+          msg: "An Error Occured.  It could be due to a previous non-commited change."
+        
+    always:
+
+      - name:  NTP Check | Gather NTP status
+        junos_command:
+          commands: show ntp status
+        register: ntp_status
+          
+      
+      - name: NTP Check  | Validate changes
+        assert:
+          that:
+            - "'status' in ntp_status['stdout_lines'][0][0]"
