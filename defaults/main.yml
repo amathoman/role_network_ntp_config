@@ -3,3 +3,5 @@
 ntp_server_list:
   - 1.1.1.1
   - 2.2.2.2
+
+remove_existing: true

@@ -12,7 +12,7 @@
     lines:
       - "no ntp server {{ item }}"
   with_items: "{{ _servers }}"
-  when: action == 'remove'
+  when: remove_existing
 
 
 
