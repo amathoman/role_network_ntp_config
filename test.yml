@@ -1,41 +1,9 @@
-
-
-
-
- try { 
- var r = new sn_ws.RESTMessageV2('matho.io - IIS Server Load Balanced', 'Matho.io POST');
- r.setStringParameter('windows_deploy_count', current.variables.windows_deploy_count);
- r.setStringParameterNoEscape('ec2_region', current.variables.ec2_region);
- r.setStringParameterNoEscape('selected_domain', current.variables.selected_domain);
- r.setStringParameterNoEscape('snow_request', current.request.number);
- r.setStringParameterNoEscape('app_name', current.variables.app_name);
-
-//override authentication profile 
-//authentication type ='basic'/ 'oauth2'
-//r.setAuthenticationProfile(authentication type, profile name);
-
-//set a MID server name if one wants to run the message on MID
-//r.setMIDServer('MY_MID_SERVER');
-
-//if the message is configured to communicate through ECC queue, either
-//by setting a MID server or calling executeAsync, one needs to set skip_sensor
-//to true. Otherwise, one may get an intermittent error that the response body is null
-//r.setEccParameter('skip_sensor', true);
-
- var response = r.execute();
- var responseBody = response.getBody();
- var httpStatus = response.getStatusCode();
+{
+    "module_stdout": "",
+    "module_stderr": "Traceback (most recent call last):\n  File \"/var/lib/awx/.ansible/tmp/ansible-local-3599918ho3obcj1/ansible-tmp-1635427507.0744655-3600229-138330139971450/AnsiballZ_ios_config.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/var/lib/awx/.ansible/tmp/ansible-local-3599918ho3obcj1/ansible-tmp-1635427507.0744655-3600229-138330139971450/AnsiballZ_ios_config.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/var/lib/awx/.ansible/tmp/ansible-local-3599918ho3obcj1/ansible-tmp-1635427507.0744655-3600229-138330139971450/AnsiballZ_ios_config.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.network.ios.ios_config', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/usr/lib64/python3.6/runpy.py\", line 205, in run_module\n    return _run_module_code(code, init_globals, run_name, mod_spec)\n  File \"/usr/lib64/python3.6/runpy.py\", line 96, in _run_module_code\n    mod_name, mod_spec, pkg_name, script_name)\n  File \"/usr/lib64/python3.6/runpy.py\", line 85, in _run_code\n    exec(code, run_globals)\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/modules/network/ios/ios_config.py\", line 569, in <module>\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/modules/network/ios/ios_config.py\", line 500, in main\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/modules/network/ios/ios_config.py\", line 364, in edit_config_or_macro\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/module_utils/connection.py\", line 185, in __rpc__\nansible.module_utils.connection.ConnectionError: 10 permit ip host 192.0.2.1 any log\r\n10 permit ip host 192.0.2.1 any log\r\n^\r\n% Invalid input detected at '^' marker.\r\n\r\nip-172-31-31-109(config)#\n",
+    "exception": "Traceback (most recent call last):\n  File \"/var/lib/awx/.ansible/tmp/ansible-local-3599918ho3obcj1/ansible-tmp-1635427507.0744655-3600229-138330139971450/AnsiballZ_ios_config.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/var/lib/awx/.ansible/tmp/ansible-local-3599918ho3obcj1/ansible-tmp-1635427507.0744655-3600229-138330139971450/AnsiballZ_ios_config.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/var/lib/awx/.ansible/tmp/ansible-local-3599918ho3obcj1/ansible-tmp-1635427507.0744655-3600229-138330139971450/AnsiballZ_ios_config.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.network.ios.ios_config', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/usr/lib64/python3.6/runpy.py\", line 205, in run_module\n    return _run_module_code(code, init_globals, run_name, mod_spec)\n  File \"/usr/lib64/python3.6/runpy.py\", line 96, in _run_module_code\n    mod_name, mod_spec, pkg_name, script_name)\n  File \"/usr/lib64/python3.6/runpy.py\", line 85, in _run_code\n    exec(code, run_globals)\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/modules/network/ios/ios_config.py\", line 569, in <module>\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/modules/network/ios/ios_config.py\", line 500, in main\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/modules/network/ios/ios_config.py\", line 364, in edit_config_or_macro\n  File \"/tmp/ansible_ios_config_payload_47xazjk0/ansible_ios_config_payload.zip/ansible/module_utils/connection.py\", line 185, in __rpc__\nansible.module_utils.connection.ConnectionError: 10 permit ip host 192.0.2.1 any log\r\n10 permit ip host 192.0.2.1 any log\r\n^\r\n% Invalid input detected at '^' marker.\r\n\r\nip-172-31-31-109(config)#\n",
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error",
+    "rc": 1,
+    "_ansible_no_log": false,
+    "changed": false
 }
-catch(ex) {
- var message = ex.message;
-}
-
-
-
-
-
-
-
-
-
-
