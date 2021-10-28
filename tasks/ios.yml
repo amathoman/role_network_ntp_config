@@ -27,9 +27,9 @@
       - ntp server {{ item }}
   with_items: "{{ ntp_server_list }}"
 
-  - name: configure new NTP server - Host Specific
-    ios_config: 
-      lines: 
-        - ntp server {{ item }}
-    with_items: "{{ host_ntp_server_list }}"
-    when: host_ntp_server_list is defined
+- name: configure new NTP server - Host Specific
+  ios_config: 
+    lines: 
+      - ntp server {{ item }}
+  with_items: "{{ host_ntp_server_list }}"
+  when: host_ntp_server_list is defined
