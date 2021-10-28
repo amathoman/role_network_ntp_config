@@ -1,3 +1,8 @@
+- name: Show Datacenter Location
+  debug:
+    var: datacenter
+  when: datacenter is defined
+
 - name: Show Run on Device
   ios_command:
     commands:
